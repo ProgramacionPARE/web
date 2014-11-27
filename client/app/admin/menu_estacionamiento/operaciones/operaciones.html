@@ -1,0 +1,28 @@
+<div class="row ">
+	<div class="col-md-5 col-md-push-7 margin-top-1em">
+    	<div class="row">
+            <div class="col-xs-12 ">
+
+            	<div class="input-group">
+            		<span class="input-group-addon">Fecha: </span>
+
+	              	<input type="text" class="form-control text-center" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Cerrar" disabled="true" />
+            	  	<span class="input-group-btn">
+	                	<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+	              	</span>
+	            </div>
+            </div>
+		</div>		
+
+	</div>
+	<div class="col-md-7 col-md-pull-5 margin-top-1em">
+		<ul class="nav nav-pills nav-justified">
+			<li role="presentation" ng-click="setActive('autos')" ng-class="{active: urlOperacion=='autos'}"><a ui-sref="admin.menu_estacionamiento.operaciones.autos">Autos</a></li>
+			<li role="presentation" ng-click="setActive('turnos')" ng-class="{active: urlOperacion=='turnos'}"><a ui-sref="admin.menu_estacionamiento.operaciones.turnos">Turnos</a ></li>
+			<li role="presentation"><a href="#">Retiros parciales</a></li>
+		</ul>
+	</div>
+</div>	
+<div ui-view  class="row">
+			 		
+</div>

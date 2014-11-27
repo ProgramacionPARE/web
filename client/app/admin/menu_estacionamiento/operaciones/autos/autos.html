@@ -1,0 +1,83 @@
+<div class="col-md-12 ">
+	
+	<div class="row margin-top-1em">
+		<div  class=" col-md-6 text-center margin-top-1em">	
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn" ng-class="{'btn-primary': filtroTurnos[$index],'btn-default': !filtroTurnos[$index]}"  ng-repeat="turno in turnos">
+						<input type="checkbox" checked="true" ng-click="cambioTurno($index)">{{turno.id}} - {{turno.tipo_turno}}
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		
+		<div  class="nomenclatura col-md-6 text-center margin-top-1em">	
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn"  ng-class="{'btn-success': filtroDentro,'btn-default': !filtroDentro}">
+					<input type="checkbox"  ng-click="filtroDentroClick()"  checked="true">Dentro
+				</label>
+				<label class="btn" ng-class="{'btn-warning': filtroFuera,'btn-default': !filtroFuera}">
+					<input type="checkbox"  ng-click="filtroFueraClick()"  checked="true">Fuera
+				</label>
+				<label class="btn " ng-class="{'btn-gray': filtroCancelado,'btn-default': !filtroCancelado}">
+					<input type="checkbox"   ng-click="filtroCanceladoClick()"  checked="true">Cancelado
+				</label>
+				<label class="btn " ng-class="{'btn-danger': filtroPerdido,'btn-default': !filtroPerdido}">
+					<input type="checkbox" ng-click="filtroPerdidoClick()"  checked="true">Perdido
+				</label>
+				<label class="btn " ng-class="{'btn-primary': filtroManual,'btn-default': !filtroManual}">
+					<input type="checkbox"   ng-click="filtroManualClick()"  checked="true">Manual
+				</label>
+			</div>	
+		</div>
+		<div class="col-md-6 margin-top-1em">
+			<div class="col-sm-6">
+				<pre class="text-center"><strong>Operaciones: {{nAutos}}</strong></pre> 
+			</div>
+			<div class="col-sm-6">
+				<pre class="text-center"><strong>Total: {{total}}</strong></pre> 
+			</div>
+		</div>	
+	
+	</div>
+	<table class="table table-condensed table-bordered margin-top-1em">
+		<thead>
+			<tr>
+				<th class="text-center" rowspan="2">Folio</th>
+				<th class="text-center" colspan="3">Entrada</th>
+				<th class="text-center" colspan="3">Salida</th>
+				<th class="text-center" rowspan="2">Horas</th>
+				<th class="text-center" rowspan="2">Minutos</th>
+				<th class="text-center" rowspan="2">Monto</th>
+			</tr>
+			<tr>
+				<th class="text-center">Turno</th>
+				<th class="text-center">Fecha</th>
+				<th class="text-center">Hora</th>
+				<th class="text-center">Turno</th>
+				<th class="text-center">Fecha</th>
+				<th class="text-center">Hora</th>
+				
+			</tr>
+		</thead>
+ 		<tbody>
+ 			<tr ng-repeat="a in autosFilter"  ng-class="{success: a.entrada_salida == 'E',warning: a.entrada_salida =='S' && a.boleto_cancelado=='NO' && a.boleto_perdido=='NO' && a.boleto_manual=='NO' , default:a.boleto_cancelado=='SI',danger:a.boleto_perdido=='SI',info:a.boleto_manual=='SI'}">
+				<td class="text-center">{{a.progresivo}}</td>
+				
+				<td class="text-center" >{{a.id_turno_entrada}}</td>
+				<td class="text-center" >{{a.fecha_entrada}}</td>
+				<td class="text-center" >{{a.hora_entrada}}</td>
+				
+				<td class="text-center" >{{a.id_turno_salida}}</td>
+				<td class="text-center" >{{a.fecha_salida}}</td>
+				<td class="text-center" >{{a.hora_salida}}</td>
+
+				<td class="text-center" >{{a.horas}}</td>
+				<td class="text-center" >{{a.minutos}}</td>
+				<td class="text-center" >{{a.monto}}</td>
+				
+			</tr>
+ 		</tbody>
+	</table>
+</div>

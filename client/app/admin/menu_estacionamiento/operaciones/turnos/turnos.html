@@ -1,0 +1,85 @@
+
+<div class="col-sm-12 "> 
+
+ <accordion close-others="true">
+
+	<accordion-group heading="" class=" margin-top-1em" ng-repeat="turno in turnos">
+	 <accordion-heading class="bg-success">
+          <div><strong>{{turno.tipo_turno}}</strong><span class="pull-right label" ng-class="{'label-success':turno.abierto_cerrado=='Abierto','label-default':turno.abierto_cerrado=='Cerrado'}">{{turno.abierto_cerrado}}</span></div> 
+        </accordion-heading>
+		<div class="row">
+			<div class="col-sm-6 margin-top-1em">
+				<pre class="text-center"><strong>Apertura: {{turno.hora_apertura}} {{turno.fecha_apertura}}  </strong></pre> 
+			</div>
+			<div class="col-sm-6 margin-top-1em">
+				<pre class="text-center"><strong>Cierre: {{turno.hora_cierre}} {{turno.fecha_cierre}}</strong></pre> 
+			</div>
+		</div>
+
+		<div class="row" ng-repeat="detalles in turno.detallesTurno">
+			<div class="col-sm-6 col-md-4 col-md-push-1 margin-top-1em "> 
+				<ul class="list-group">
+					<li class="list-group-item">
+						<span class="right">{{detalles.folio_inicial}}</span>
+				    	Folio inicial:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.folio_final}}</span>
+				    	Folio final:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol}}</span>
+				    	Boletos expedidos:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_turno_a}}</span>
+				    	Boletos turno anterior:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_cobrados}}</span>
+				    	Boletos cobrados:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_cancelados}}</span>
+				    	Boletos cancelados:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_perdidos}}</span>
+				    	Boletos perdidos:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_contra}}</span>
+				    	Boletos cobrados con contra:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_turno_s}}</span>
+				    	Boletos pendientes turno siguiente:
+				  	</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 col-md-4 col-md-push-3  margin-top-1em"> 
+				<table class="table table-condensed table-bordered ">
+					<thead>
+						<tr>
+							<th class="text-center">Monto</th>
+							<th class="text-center">Cantidad</th>
+							<th class="text-center">Total</th>
+						</tr>
+					</thead>
+			 		<tbody>
+			 			<tr ng-repeat="d in lAutos[$parent.$index][$index] " >
+							<td class="text-center" >{{d.monto}}</td>
+							<td class="text-center" >{{d.no}}</td>
+							<td class="text-center" >{{d.total}}</td>
+							
+						</tr>
+			 		</tbody>
+			</table>
+			</div>
+
+		</div>
+		
+
+  	</accordion-group>
+  	</accordion>
+</div>	
