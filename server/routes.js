@@ -13,11 +13,12 @@ module.exports = function(app) {
   app.use('/api/turnos', require('./api/turno'));
   app.use('/api/autos', require('./api/auto'));
   app.use('/api/estacionamientos', require('./api/estacionamiento'));
-  app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
+  app.use('/api/files', require('./components/files'));
 
   app.use('/auth', require('./auth'));
   
+  app.use('/stats',require('./components/stats'));
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);

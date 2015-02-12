@@ -6,7 +6,7 @@ angular.module('pareApp')
 		
 		$scope.$watch('turnosDetallesActualizado', function() {
 			calcularRangos();
-			console.log($scope.lAutos)
+			console.log("sDetallesActualizado");
 		});
 
 	
@@ -19,9 +19,9 @@ angular.module('pareApp')
 				turno.detallesTurno.forEach(function(detalleTurno){
 					var auTemp2=[];
 					$scope.autos.forEach(function(auto){
-				
+						
 						var agregar = true;
-						if(auto.dentro_fuera = "S" && auto.id_turno_salida == turno.id && detalleTurno.serie == auto.serie){
+						if(auto.dentro_fuera = "S" && auto.id_turno_salida == turno.id && detalleTurno.serie == auto.serie && auto.boleto_cancelado != "SI" && auto.boleto_perdido != "SI"){
 							auTemp2.forEach(function(auT){
 								if(auT.monto == auto.monto){
 									auT.no++;
@@ -39,6 +39,17 @@ angular.module('pareApp')
 						}
 					
 					});
+					//Ordenan de menor a mayor
+					auTemp2.sort(function(a,b){return(a.monto-b.monto)});
+					//Ontengo los totales
+					var a = {};
+					a.no = 0;
+					a.total = 0;
+					auTemp2.forEach(function(conjunto){
+						a.no+= conjunto.no;
+						a.total += conjunto.total;
+					})
+					auTemp2.push(a);
 					auTemp.push(auTemp2);
 				});
 				$scope.lAutos.push(auTemp);

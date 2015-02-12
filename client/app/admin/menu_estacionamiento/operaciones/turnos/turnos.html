@@ -36,9 +36,23 @@
 				    	Boletos turno anterior:
 				  	</li>
 				  	<li class="list-group-item">
-						<span class="right">{{detalles.no_bol_cobrados}}</span>
-				    	Boletos cobrados:
+						<b><span class="right">{{ (detalles.no_bol_cobrados *1) + (detalles.no_bol_contra *1) + (detalles.no_bol_manual *1) }}</span>
+				    	Total cobrados:</b>
 				  	</li>
+			  		<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_cobrados}}</span>
+				    	Boletos cobrados normalmente:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_contra}}</span>
+				    	Boletos cobrados con contra:
+				  	</li>
+				  	<li class="list-group-item">
+						<span class="right">{{detalles.no_bol_manual}}</span>
+				    	Boletos cobrados manualmente:
+				  	</li>
+
+
 				  	<li class="list-group-item">
 						<span class="right">{{detalles.no_bol_cancelados}}</span>
 				    	Boletos cancelados:
@@ -47,10 +61,7 @@
 						<span class="right">{{detalles.no_bol_perdidos}}</span>
 				    	Boletos perdidos:
 				  	</li>
-				  	<li class="list-group-item">
-						<span class="right">{{detalles.no_bol_contra}}</span>
-				    	Boletos cobrados con contra:
-				  	</li>
+				  
 				  	<li class="list-group-item">
 						<span class="right">{{detalles.no_bol_turno_s}}</span>
 				    	Boletos pendientes turno siguiente:
@@ -83,3 +94,4 @@
   	</accordion-group>
   	</accordion>
 </div>	
+

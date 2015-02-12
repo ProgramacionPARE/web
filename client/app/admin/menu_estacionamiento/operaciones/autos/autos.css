@@ -4,3 +4,48 @@
 	display: inline-block;
 	padding: .5em;
 }
+.cancelado{
+	display: inline-block;
+	border-radius: 50%;
+	background-color: silver;
+	height: 15px;
+	width: 15px;
+}
+
+.perdido{
+	display: inline-block;
+	border-radius: 50%;
+	background-color: OrangeRed;
+	height: 15px;
+	width: 15px;
+}
+
+.manual{
+	display: inline-block;
+	border-radius: 50%;
+	background-color: DodgerBlue;
+	height: 15px;
+	width: 15px;
+}
+
+.contra{
+	display: inline-block;
+	border-radius: 50%;
+	background-color: purple;
+	height: 15px;
+	width: 15px;
+}
+
+.oficina{
+	display: inline-block;
+	border-radius: 50%;
+	background-color: black;
+	height: 15px;
+	width: 15px;
+}
+
+.btn-dark{
+	 color: #fff;
+ 	background-color: #111111;
+ 	border-color: #222222;
+}

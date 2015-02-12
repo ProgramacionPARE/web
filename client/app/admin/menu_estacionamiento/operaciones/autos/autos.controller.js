@@ -17,6 +17,7 @@ angular.module('pareApp')
 		$scope.filtroCancelado =true;
 		$scope.filtroPerdido =true;
 		$scope.filtroManual =true;
+		$scope.filtroOficina =true;
 	 	
 		$scope.$watch('turnosActualizado', function() {
 			$scope.turnos.forEach(function(turnos){
@@ -50,6 +51,10 @@ angular.module('pareApp')
 			$scope.filtroManual = !$scope.filtroManual;
 			aplicarFiltros();
 	 	}
+	 	$scope.filtroOficinaClick = function(){
+			$scope.filtroOficina = !$scope.filtroOficina;
+			aplicarFiltros();
+	 	}
 	 	
 	 	function totalizar(){
 	 		$scope.total = 0;
@@ -69,7 +74,7 @@ angular.module('pareApp')
 			 			$scope.autosFilter = $scope.autosFilter.concat( $filter('filter')($scope.autos, {entrada_salida:"E",id_turno_entrada:turno.id}) )
 			 		if($scope.filtroFuera)
 			 			$scope.autosFilter = $scope.autosFilter.concat( $filter('filter')($scope.autos, 
-			 				{entrada_salida:"S",boleto_cancelado:"NO",boleto_perdido:"NO",boleto_manual:"NO",id_turno_entrada:turno.id}) )
+			 				{entrada_salida:"S",boleto_cancelado:"NO",boleto_perdido:"NO",boleto_manual:"NO",id_turno_salida:turno.id}) )
 					if($scope.filtroCancelado)
 						$scope.autosFilter = $scope.autosFilter.concat( $filter('filter')($scope.autos, {boleto_cancelado:"SI",id_turno_entrada:turno.id}) )
 					if($scope.filtroPerdido)

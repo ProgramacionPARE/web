@@ -5,7 +5,6 @@ var Auto = require('./auto.model');
 
 // Get list of autos
 exports.index = function(req, res) {
-  console.log(req.query)
   Auto.find(req.query,function (err, autos) {
     if(err) { return handleError(res, err); }
     return res.json(200, autos);
@@ -23,10 +22,20 @@ exports.show = function(req, res) {
 
 // Creates a new auto in the DB.
 exports.create = function(req, res) {
-  Auto.create(req.body, function(err, auto) {
+  var query = {id_estacionamiento: req.body.id_estacionamiento, id: req.body.id}
+  Auto.find(query,function (err, autos) {
     if(err) { return handleError(res, err); }
-    return res.json(201, auto);
+    if(!autos.length){
+        Auto.create(req.body, function(err, auto) {
+          if(err) { return handleError(res, err); }
+          return res.json(201, auto);
+      });
+    }else{
+      console.log("Auto duplicado");
+       return res.json(200, autos[0]);
+    }
   });
+
 };
 
 // Updates an existing auto in the DB.

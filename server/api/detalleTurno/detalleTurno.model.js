@@ -16,6 +16,7 @@ var DetalleTurnoSchema = new Schema({
 	no_bol_perdidos: String,
 	no_bol_cobrados: String,
 	no_bol_contra: String,
+	no_bol_manual: String,
 	no_bol_turno_s: String,
 	total: String
 

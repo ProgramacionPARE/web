@@ -22,10 +22,23 @@ exports.show = function(req, res) {
 
 // Creates a new detalleTurno in the DB.
 exports.create = function(req, res) {
-  DetalleTurno.create(req.body, function(err, detalleTurno) {
-    if(err) { return handleError(res, err); }
-    return res.json(201, detalleTurno);
-  });
+    var query = {id_estacionamiento: req.body.id_estacionamiento, id: req.body.id}
+    DetalleTurno.find(query,function (err, detalleTurnos) {
+      if(err) { return handleError(res, err); }
+      if(!detalleTurnos.length){
+        DetalleTurno.create(req.body, function(err, detalleTurno) {
+          if(err) { return handleError(res, err); }
+          return res.json(201, detalleTurno);
+        });
+      }else{
+         console.log("detalleTurno duplicado") 
+         return res.json(200, detalleTurnos[0]);
+      } 
+    });
+
+  
+
+
 };
 
 // Updates an existing detalleTurno in the DB.

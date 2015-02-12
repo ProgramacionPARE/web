@@ -28,7 +28,7 @@ var AutoSchema = new Schema({
   boleto_cancelado: String,
   boleto_manual: String,
   boleto_contra: String,
-
+  boleto_oficina: String,
   marca:		String,
   modelo:		String,
   color:		String,
